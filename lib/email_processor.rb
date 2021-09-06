@@ -1,3 +1,5 @@
+require "base64"
+
 class EmailProcessor
 
   def initialize(email)
@@ -23,12 +25,15 @@ class EmailProcessor
     # Outright reject spam from creating a ticket at all
     return if (@spam_score > AppSettings["email.spam_assassin_reject"].to_f)
 
+    # debug email contents
+    # puts @email.inspect
+
     # Set attributes from email
     sitename = AppSettings["settings.site_name"]
     email_address = @email.from[:email].downcase
     email_name = @email.from[:name].blank? ? @email.from[:token].gsub(/[^a-zA-Z]/, '') : @email.from[:name]
-    message = @email.body.nil? ? "" : encode_entity(@email.body)
-    raw = @email.raw_body.nil? ? "" : encode_entity(@email.raw_body)
+    message = @email.body.nil? ? "" : encode_entity(@email.raw_body, @email.charsets["text"])
+    raw = @email.raw_body.nil? ? "" : encode_entity(@email.raw_body, @email.charsets["text"])
     to = @email.to.first[:email]
     cc = @email.cc ? @email.cc.map { |e| e[:full] }.join(", ") : nil
     token = @email.to.first[:token]
@@ -36,6 +41,17 @@ class EmailProcessor
     attachments = @email.attachments
     number_of_attachments = attachments.present? ? attachments.size : 0
     spam_report = @email.spam_report
+
+    # Fix incorrect subject encoding sent by outlook
+    begin
+      headers_subject = @email.headers['Subject']
+      if headers_subject.start_with?('=?gb2312?B?')
+        subject = encode_entity(Base64.decode64(
+          headers_subject.strip.gsub("\n", "").gsub(" ", "").gsub("=?gb2312?B?", "").gsub("?=", "")), "gb2312")
+      end
+    rescue => e
+      puts e
+    end
 
     if subject.include?("[#{sitename}]") # this is a reply to an existing topic
       EmailProcessor.create_reply_from_email(@email, email_address, email_name, subject, raw, message, token, to, sitename, cc, number_of_attachments, @spam_score, spam_report)
@@ -45,8 +61,9 @@ class EmailProcessor
       EmailProcessor.create_new_ticket_from_email(@email, email_address, email_name, subject, raw, message, token, to, cc, number_of_attachments, @spam_score, spam_report)
     end
 
-  # rescue
-  #   render status: 200
+  rescue => e
+    puts e
+    render status: 500
   end
 
   # Insert a default subject if subject is missing
@@ -54,8 +71,13 @@ class EmailProcessor
     subject.blank? ? "(No Subject)" : subject
   end
 
-  def encode_entity(entity)
-    !entity.nil? ? entity.encode('utf-8', invalid: :replace, replace: '?') : entity
+  def encode_entity(entity, charset)
+    if charset == 'gb2312'
+      # outlook will send email with gb2312 encoding if browser setting is en-US and email contains kanji or kana
+      # but the actual encoding is gb18030 (gb2312 won't decode many kanji)
+      charset = 'gb18030'
+    end
+    !entity.nil? ? entity.encode('utf-8', charset, invalid: :replace, :undef => :replace, replace: '?') : entity
   end
 
   def self.handle_attachments(email, post)

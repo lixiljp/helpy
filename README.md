@@ -3,10 +3,13 @@ Helpy: A Modern Helpdesk Platform
 
 Helpy is a modern help desk platform written in Ruby on Rails and released under the MIT license.  The goal of Helpy is to power your support email and ticketing, integrate seamlessly with your app, and run an amazing customer helpcenter.
 
-[![Build Status](https://img.shields.io/travis/helpyio/helpy/master.svg)](https://travis-ci.org/helpyio/helpy) [![Code Climate](https://codeclimate.com/github/helpyio/helpy/badges/gpa.svg)](https://codeclimate.com/github/helpyio/helpy)
+**Forked by LIXIL to fix bugs and improve features.**
 
-![](https://helpy.io/images/github-main-image.png)
+Changes:
 
+- Remove caddy
+- Fix email processor for non utf-8 encoding
+- Complete japanese translation
 
 Sponsor/Support Helpy
 ========

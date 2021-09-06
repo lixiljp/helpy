@@ -48,5 +48,8 @@ Rails.application.configure do
   config.i18n.default_locale = :en
   config.i18n.fallbacks = true
 
+  # The csrf checking logic is broken for email processing api and can't not be disabled partially
+  # After disable it the csrf protection will depend on browser (default SameSite settings)
+  config.action_controller.allow_forgery_protection = false
 
 end

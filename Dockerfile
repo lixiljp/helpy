@@ -1,4 +1,4 @@
-FROM ruby:2.4
+FROM ruby:2.5
 
 ENV RAILS_ENV=production \
     HELPY_HOME=/helpy \
@@ -12,7 +12,7 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN useradd --no-create-home $HELPY_USER \
+RUN useradd --create-home $HELPY_USER \
   && mkdir -p $HELPY_HOME $BUNDLE_PATH \
   && chown -R $HELPY_USER:$HELPY_USER $HELPY_HOME $BUNDLE_PATH
 
@@ -37,7 +37,7 @@ RUN bundle install --without test development
 RUN mkdir -p $HELPY_HOME/public/assets $HELPY_HOME/public/uploads \
     && chown $HELPY_USER $HELPY_HOME/public/assets $HELPY_HOME/public/uploads
 
-VOLUME $HELPY_HOME/public
+# VOLUME $HELPY_HOME/public
 
 USER root
 COPY . $HELPY_HOME/

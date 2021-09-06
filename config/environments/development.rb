@@ -56,6 +56,10 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :inline
 
+  # The csrf checking logic is broken for email processing api and can't not be disabled partially
+  # After disable it the csrf protection will depend on browser (default SameSite settings)
+  config.action_controller.allow_forgery_protection = false
+
   config.after_initialize do
     # Bullet Configuration / https://github.com/flyerhzm/bullet
     # Bullet.enable = true

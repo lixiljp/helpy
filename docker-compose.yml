@@ -1,37 +1,21 @@
 version: '2'
 
 services:
-  frontend:
-    image: webwurst/caddy
-    volumes:
-      - ./docker/Caddyfile:/etc/caddy/Caddyfile
-      - ./certs:/etc/caddy/certs
-    volumes_from:
-      - helpy:ro
-    ports:
-      - "80:80"
-      - "443:443"
-    networks:
-      - front
-    restart: always
-    depends_on:
-      - helpy
   helpy:
     build: .
     restart: always
-    networks:
-      - front
-      - back
+    ports:
+      - "80:8080"
     volumes:
-      - rails-assets:/helpy/public
+      - .:/helpy
     env_file: docker/.env
+    links:
+      - postgres
     depends_on:
       - postgres
   postgres:
     image: postgres:9.4
     restart: always
-    networks:
-      - back
     env_file: docker/.env
     volumes:
       - ./postgres:/var/lib/postgresql/data
@@ -39,9 +23,3 @@ services:
 volumes:
   rails-assets:
     driver: local
-
-networks:
-  front:
-    driver: bridge
-  back:
-    driver: bridge

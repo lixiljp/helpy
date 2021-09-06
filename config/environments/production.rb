@@ -84,4 +84,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # The csrf checking logic is broken for email processing api and can't not be disabled partially
+  # After disable it the csrf protection will depend on browser (default SameSite settings)
+  config.action_controller.allow_forgery_protection = false
 end
