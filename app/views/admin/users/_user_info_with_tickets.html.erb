@@ -35,6 +35,7 @@
         <br/>
         <%= best_in_place_if !user.is_agent?, user, :state, as: :input, url: admin_user_path(user),
         place_holder: t('click_to_edit', what: t('activerecord.attributes.user.state'), default: 'click to edit %{what}') %>
+        <br/>
         <%= best_in_place_if !user.is_agent?, user, :zip, as: :input, url: admin_user_path(user),
         place_holder: t('click_to_edit', what: t('activerecord.attributes.user.zip'), default: 'click to edit %{what}') %><br/>
       </div>
@@ -42,7 +43,7 @@
         <div class="tiny-header"><%= t(:phone, default: "Phone") %>:</div>
         <%= t(:work_phone, default: "work") %>: <%= best_in_place_if !user.is_agent?, user, :work_phone,
         as: :input, url: admin_user_path(user), place_holder: t('click_to_edit', what: '', default: 'click to edit %{what}') %><br/>
-        <%= t(:home_home, default: "home") %>: <%= best_in_place_if !user.is_agent?, user, :home_phone,
+        <%= t(:home_phone, default: "home") %>: <%= best_in_place_if !user.is_agent?, user, :home_phone,
         as: :input, url: admin_user_path(user), place_holder: t('click_to_edit', what: '', default: 'click to edit %{what}') %><br/>
         <%= t(:cell_phone, default: "cell") %>: <%= best_in_place_if !user.is_agent?, user, :cell_phone,
         as: :input, url: admin_user_path(user), place_holder: t('click_to_edit', what: '', default: 'click to edit %{what}') %><br/>

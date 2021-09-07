@@ -9,7 +9,7 @@ en:
   nothing_here: "ここにお探しのものはありません"
 
   # Navigation
-  knowledgebase: "知識ベース"
+  knowledgebase: "ドキュメント"
   community: "コミュニティ"
   ask_a_question: "質問をする"
   home: *root
@@ -19,7 +19,7 @@ en:
   back_to: "戻る"
   welcome_back: "ようこそ %{username}"
   your_profile: "プロフィール"
-  your_tickets: "あなたのサポート・チケット"
+  your_tickets: "あなたのチケット"
   locale: "ロケール"
   change_your_locale: "ロケールの変更"
 
@@ -39,21 +39,21 @@ en:
 
   # Community
   forum_name: "トピック"
-  subject: &subject "題名"
+  subject: &subject "タイトル"
   message: "メッセージ"
   last_activity: "最終ログイン"
   topic: "トピック"
   replies: "返信"
-  last_post: "最終投稿"
+  last_post: "最終返信"
   started_by: "%{username} によって開始"
   reply: "コメントする"
-  submit_reply: "投稿する"
-  posted: "投稿した"
-  start_discussion: "新規投稿"
-  submit_start_discussion: "新規投稿をする"
+  submit_reply: "返信する"
+  posted: "チケットを作成しました"
+  start_discussion: "新規チケット"
+  submit_start_discussion: "チケットを作成する"
   should_message_be_private: "このメッセージを非公開にするですか？"
-  only_support_can_respond: "管理者権限のユーザーのみが投稿可能"
-  responses_can_come_from_everyone: "誰でも投稿できる (おすすめ)"
+  only_support_can_respond: "管理者権限のユーザーのみが返信可能"
+  responses_can_come_from_everyone: "誰でも返信できる (おすすめ)"
   collapsed_messages:
       one: "1 折り畳みメッセージ"
       two: "2 折り畳みメッセージ"
@@ -67,14 +67,14 @@ en:
 
   # Tickets
   tickets: &tickets "チケット"
-  no_tickets: "作成なさったサポート・チケットは，ありません"
+  no_tickets: "チケットはありません"
   ticket_number: "チケット番号"
-  assigned_to_label: "割り当て"
+  assigned_to_label: "アサイン"
   created_on: "作成日時"
 
   # Get Help
   get_help_header: "まだ問題は解決していませんか?"
-  get_help_button: "サポート・チケットを作成して，お問い合わせください"
+  get_help_button: "お問い合わせチケットを作成してください"
 
   # Profile
   my_profile: 'プロフィール'
@@ -83,14 +83,14 @@ en:
   select_locale: "言語設定変更"
 
   # footer
-  powered_by: "サポート管理システム Helpy (LIXIL 版)"
+  powered_by: "お問い合わせ管理システム Helpy (LIXIL 版)"
   get_your_copy: ""
   version: "バージョン:"
 
   # flag
   flag_for_review: "レビューのためのフラグを立てる"
   flag_post_for_review: "レビューのためのフラグを立てる"
-  flag_post_placeholder: "この投稿にフラグを立てた理由を記述"
+  flag_post_placeholder: "この返信にフラグを立てた理由を記述"
   flag: "フラグ"
 
   # devise/sessions/new
@@ -139,56 +139,56 @@ en:
   support_pipeline: "サポートパイプライン"
   new: "新規"
   active: "アクティブ"
-  open: "開く"
-  mine: "私のもの"
+  open: "処理中"
+  mine: "担当中"
   pending: "保留中"
   closed: &closed "解決済み"
   spam: "迷惑メール"
   trash: "ゴミ箱"
   discussion_managment: "管理画面"
-  open_new_discussion: "掲示板に投稿する"
-  assigned_to: "%{agent}に委託する"
-  unassigned: "未割り当て"
-  no_team_assigned: "チームに割り当てる"
+  open_new_discussion: "チケットを作成"
+  assigned_to: "%{agent} が担当中"
+  unassigned: "アサイン待ち"
+  no_team_assigned: "チームにアサイン"
   assign_to: "グループ/チーム"
-  unassign_from_team: "割り当てを解除するチーム"
+  unassign_from_team: "チームへのアサインを解除"
   private: "非公開"
   public: "公開済み"
   save_changes: "変更を保存"
   merge: "マージ"
   merge_confirm: "本当にこれらのチケットをマージしますか?"
-  customer_conversation: "ユーザーのやりとり"
+  customer_conversation: "お問い合わせ"
   internal_ticket: "内部向けチケット"
-  unassign_agent: "割り当てを解除するエージェント"
+  unassign_agent: "エージェントへのアサインを解除"
 
   # Discussion controls
-  change_status: "状態変更"
+  change_status: "状態を変更"
   status: &status "状態"
-  mark_closed: "解決済みに設定する"
-  reopen: "チケットを再開する"
-  mark_spam: "スパムに分類する"
-  mark_new: "新チケットに分類する"
-  assign_agent: &assign_agent "エージェント設定"
+  mark_closed: "解決済み"
+  reopen: "処理中"
+  mark_spam: "スパム"
+  mark_new: "新規"
+  assign_agent: &assign_agent "エージェントにアサイン"
   tag_with: &tag_with "チケット"
   selected_messages:
-    one: "メッセージを 1 件選択した"
-    two: "メッセージを 2 件選択した"
-    other: "メッセージを %{count} 件選択した"
+    one: "1 件選択中"
+    two: "2 件選択中"
+    other: "%{count} 件選択中"
   mark_as: "マーク"
   move_to: "移動"
   users_history: "%{role} のログ"
 
   # Discussion messages
-  new_message: "このチケットはスタッフにより新チケットに分類されました"
-  spam_message: "このチケットはスタッフによりスパムに分類されました"
-  reopen_message: "このチケットはスタッフにより再開されました"
-  closed_message: "このチケットはスタッフにより解決済みしました"
+  new_message: "このチケットは担当者から新規チケットに設定されました"
+  spam_message: "このチケットは担当者からスパムに設定されました"
+  reopen_message: "このチケットは担当者から処理中に設定されました"
+  closed_message: "このチケットは担当者から解決済みに設定されました"
   trash_message: "このチケットは削除されました"
-  assigned_message: "やり取りは %{assigned_to} に転送されました"
-  unassigned_message: "このチケットへの割り当ては解除されました。"
-  assigned_group: "このチケットは %{assigned_group} に割り当てられました。"
-  converted_to_ticket: "このやりとりは内部向けチケットに変換されました。"
-  converted_to_topic: "このチケットは掲示板 %{forum_name} に移動および公開されました。"
+  assigned_message: "このチケットは %{assigned_to} にアサインされました"
+  unassigned_message: "このチケットへのアサインが解除されました。"
+  assigned_group: "このチケットは %{assigned_group} にアサインされました。"
+  converted_to_ticket: "このチケットは内部向けに設定されました。"
+  converted_to_topic: "このチケットは %{forum_name} に移動されました。"
   tagged_with: "このチケットにタグ %{tagged_with} が付けられました"
   notes_hidden: "このチケットには内部メモが %{hidden_notes} 件あります。"
   topic_added_from: "%{channel} から %{kind} が追加されました"
@@ -202,12 +202,13 @@ en:
   edit_user: "ユーザーを編集"
   delete_user: "ユーザーを削除"
   work_phone: "職場の電話番号"
+  home_phone: "電話番号"
   cell_phone: "携帯電話番号"
   last_seen: "最終ログイン日時"
-  scrub_user: "匿名ユーザー"
-  anonymize_user_warning: "ユーザー %{user_name} を匿名化しますか？ユーザーは匿名になりますが、ユーザーにより作成されたチケットと投稿は残ります。"
-  delete_user_warning: "ユーザー %{user_name} を削除しますか？ユーザーにより作成されたチケット、投稿、返信も一緒に削除されます。"
-  click_to_edit: "%{what} を編集する"
+  scrub_user: "匿名ユーザーにする"
+  anonymize_user_warning: "ユーザー %{user_name} を匿名化しますか？ユーザーは匿名になりますが、ユーザーにより作成されたチケットと返信は残ります。"
+  delete_user_warning: "ユーザー %{user_name} を削除しますか？ユーザーにより作成されたチケットと返信も一緒に削除されます。"
+  click_to_edit: "%{what} を設定する"
 
   # Priorities
   select_priority: &priority "優先度の選択"
@@ -239,36 +240,36 @@ en:
   from_name: "送信者の名前"
 
   # Keyboard Shortcuts
-  shortcut_then: "then"
-  listing_views: "Listing views"
-  keyboard_shortcuts: "Keyboard Shortcuts"
-  show_new_tickets: "Show new tickets"
-  show_all_tickets: "Show all tickets"
-  show_open_tickets: "Show open tickets"
-  show_tickets_assigned_to_you: "Show tickets assigned to you"
-  show_pending_tickets_assigned_to_you: "Show pending tickets assigned to you"
-  show_closed_tickets: "Show closed tickets"
-  search_for_tickets: "Search for tickets"
-  viewing_tickets: "View tickets"
-  select_previous_ticket: "Select previous ticket"
-  select_next_ticket: "Select next ticket"
-  view_selected_ticket: "View selected ticket"
-  jump_to_a_specific_ticket_number: "Jump to a specific ticket number"
-  ticket_actions: "Ticket actions"
-  assign_the_ticket: "Assign ticket"
-  move_the_ticket: "Move ticket"
-  expand_the_ticket_thread: "Expand ticket thread"
-  reply_to_the_ticket: "Reply to the ticket"
-  add_an_internal_note: "Add an internal note"
-  change_ticket_status: "Change ticket status"
-  associate_with_a_group: "Associate with a group"
-  ticket_status: "Ticket status"
-  mark_resolved: "Close Ticket"
-  reopen_ticket: "Reopen ticket"
-  set_to_new: "Mark as new"
-  mark_as_spam: "Mark as spam"
-  move_to_trash: "Move to trash"
-  ticket_number: "ticket number"
+  shortcut_then: "次へ"
+  listing_views: "ビュー一覧"
+  keyboard_shortcuts: "ショットカットキー"
+  show_new_tickets: "新しいチケットを表示する"
+  show_all_tickets: "全てのチケットを表示する"
+  show_open_tickets: "作成したチケットを表示する"
+  show_tickets_assigned_to_you: "アサインされたチケットを表示する"
+  show_pending_tickets_assigned_to_you: "アサインされた処理中のチケットを表示する"
+  show_closed_tickets: "解決済みのチケットを表示する"
+  search_for_tickets: "チケット検索"
+  viewing_tickets: "チケット一覧"
+  select_previous_ticket: "前のチケットを選択する"
+  select_next_ticket: "次のチケットを選択する"
+  view_selected_ticket: "選択したチケットを表示する"
+  jump_to_a_specific_ticket_number: "特定のチケットを表示する"
+  ticket_actions: "アクション"
+  assign_the_ticket: "アサイン"
+  move_the_ticket: "移動"
+  expand_the_ticket_thread: "チケットを拡張する"
+  reply_to_the_ticket: "返信"
+  add_an_internal_note: "内部メモを追加"
+  change_ticket_status: "状態を変更"
+  associate_with_a_group: "グループを設定"
+  ticket_status: "チケットの状態"
+  mark_resolved: "チケットを解決済みに設定"
+  reopen_ticket: "チケットを処理中に設定"
+  set_to_new: "新規チケットに設定"
+  mark_as_spam: "スパムに設定"
+  move_to_trash: "ゴミ箱に移動"
+  ticket_number: "チケット番号"
 
   # User search results
   users_found:
@@ -285,9 +286,9 @@ en:
   send_invite: "招待メッセージを送る"
 
   # Discussion View
-  asked_a_question: "%{user_name}さんは質問しました"
-  replied: "%{user_name}さんは返信しました"
-  posted_note: "%{user_name}さんは内部メモを投稿する"
+  asked_a_question: "%{user_name} からのお問い合わせ"
+  replied: "%{user_name} からの返信"
+  posted_note: "内部メモ"
   type_reply: "ご記入いただくか、下記のテンプレートより返信内容をお選びください。"
   select_common: "テンプレート選択"
   reply: "返信"
@@ -300,14 +301,14 @@ en:
 
   # Content
   new_category: "新しいカテゴリー"
-  new_content: "新しいコンテント"
+  new_content: "新しい記事"
   front_page_categories: "フロントページカテゴリー"
   other_categories: "他のカテゴリー"
   edit: "編集"
   edit_category: 'カテゴリーの編集'
   select_category: 'カテゴリー選択'
   delete: "削除"
-  view_and_edit: "ビューと編集"
+  view_and_edit: "閲覧/編集"
   delete_confirm: "削除しますか？"
   select_icon_helptext: "カテゴリーと関係しているものをアイコンよりお選びください"
   translate: "異なる言語への翻訳"
@@ -318,17 +319,17 @@ en:
   draft_content: "下書き"
   published_content: "公開済み"
   additional_settings: "追加設定"
-  content_status: "コンテントの状態"
-  convert_content: '投稿をコンテントに変換'
+  content_status: "記事の状態"
+  convert_content: '記事に変換'
   upload_image: '画像アップロード'
-  new_discussion: 'ここから議論を作成する'
-  new_discussion_post: '議論 #%{topic_id} はここから作成されました'
+  new_discussion: 'ここからチケットを作成する'
+  new_discussion_post: 'チケット #%{topic_id} を作成しました'
   new_discussion_topic_title: '#%{original_id}-%{original_name} から分割'
-  change_owner_note: 'この議論の作成者は %{old} から %{new} に変更になりました'
+  change_owner_note: 'このチケットの作成者は %{old} から %{new} に変更になりました'
 
   # Internal Content
-  no_internal_content_title: "There's no internal documentation written yet!"
-  no_internal_content_text: "Dont worry ! To contribute with the internal documentation, go to Helpcenter > Content. And add a new Internal type of Category, then share your knowledge with your team writing some Docs!"
+  no_internal_content_title: "内部ドキュメントはまだ書かれていません。"
+  no_internal_content_text: "内部ドキュメントを追加するには、記事の管理画面から内部向けのカテゴリーを追加して、カテゴリーの下に記事を作成してください"
 
   # Communities
   new_community: "コミュニティの作成"
@@ -344,7 +345,7 @@ en:
   thank_you: "ありがとうございました!"
   new_user: "お問い合わせありがとうございます。 頂いたメッセージはサポートチームが受信いたしました。速やかに応答できるよう努めます。"
   account_generated: "このアカウントはあなたによって作成されました。サインインするには，このリンクをご利用ください :"
-  above_this_line: "返信はこの行の上に作成してください。"
+  above_this_line: "返信内容をこの行の上に置いてください。"
   message_id: "メッセージ ID"
   message_response: "続くメッセージは頂いたご質問に対する応答です :"
   ticket_added: "新しいチケットが作成されました、確認するためにはリンクを開いてください: %{ticket_link}"
@@ -352,16 +353,16 @@ en:
   view_online: "オンラインで閲覧する:"
 
   # Admin notifications
-  notify_new_private: "A new customer ticket has been received from %{user_name}:"
-  notify_new_public: "A new public customer message has been posted by %{user_name}:"
-  notify_new_reply: "A new customer reply has been received from %{user_name}:"
-  notify_user_delete: "User %{user_name} was scheduled for permanent deletion."
-  to_reply: 'Reply to this message directly or online:'
+  notify_new_private: "%{user_name} から新しいチケットが作成されました"
+  notify_new_public: "%{user_name} から新しい質問が作成されました"
+  notify_new_reply: "%{user_name} から返信が来ました"
+  notify_user_delete: "%{user_name} を削除対象にしました"
+  to_reply: 'メールまたは下記のリンクから返信してください:'
 
   # Notifications settings panel
-  notify_on_private: "When a new ticket has been received"
-  notify_on_public: "When a public customer question has been posted"
-  notify_on_reply: "When a new reply to a ticket has been received"
+  notify_on_private: "新しいチケットが作成された時"
+  notify_on_public: "新しい質問が作成された時"
+  notify_on_reply: "返信が来た時"
 
   # settings
   agent_settings: "エージェント設定"
@@ -392,156 +393,156 @@ en:
   group_description:
 
   # General
-  site_name: Site Name
-  site_url: Site URL
-  site_url_placeholder: The URL of your Helpy (https://support.yourdomain.com)
-  parent_site: Parent Site
-  parent_company: Parent Company
-  site_tagline: Site Tagline
-  enable_forums: Enable Community Forums
-  enable_knowledgebase: Enable Knowledgebase
-  enable_tickets: Enable Private Tickets
-  enable_teams: Enable Teams
-  enable_welcome_email: Send a welcome email to new users
+  site_name: "サイト名"
+  site_url: "サイトURL"
+  site_url_placeholder: "Helpy URL (今アクセスしているサイトのURL)"
+  parent_site: "親サイト"
+  parent_company: "親会社"
+  site_tagline: "タグ"
+  enable_forums: "コミュニティ機能を有効化"
+  enable_knowledgebase: "ドキュメント機能を有効化"
+  enable_tickets: "チケット機能を有効化"
+  enable_teams: "チーム機能を有効化"
+  enable_welcome_email: "新しいユーザーが作成された時歓迎メールを送信する"
 
   # Design
-  header_logo: Header Logo
-  search_background: Search Background Color
-  top_bar: Header Accent Color
-  link_color: Link Color
-  form_background: Form Background Color
+  header_logo: "ヘッダーロゴ"
+  search_background: "検索欄の背景色"
+  top_bar: "ヘッダーのアクセント色"
+  link_color: "リンク色"
+  form_background: "フォームの背景色"
   still_need_help:
 
   # Locales
-  supported_locales: Supported Locales
-  default_locale: Default Locale
-  select_default_locale: "Select Default Locale..."
+  supported_locales: "言語一覧"
+  default_locale: "既定の言語"
+  select_default_locale: "既定の言語を選択"
 
   # Widget
-  show_widget: Show widget on support site
-  widget_background: Widget Background Color
-  button_color: Widget Button Color
-  button_text_color: Widget Text Color
+  show_widget: "ウィジェットを表示する"
+  widget_background: "ウィジェット背景の色"
+  button_color: "ウィジェットボタンの色"
+  button_text_color: "ウィジェットテキストの色"
 
   # Integrations
-  incoming_webhook: Incoming Webhook
-  incoming_webhook_description: Create tickets from existing webforms by POSTing to a JSON webhook URL. Your secret URL is
-  enable_webhook_url: Enable Incoming Webhooks
+  incoming_webhook: "受信用 Webhook"
+  incoming_webhook_description: "以下の URL に JSON を POST すると、チケットを作成できます"
+  enable_webhook_url: "受信用 Webhook を有効化"
   google_analytics: Google Analytics
-  google_analytics_description: Send Helpdesk usage statistics into Google Analytics for reporting and visualization.
-  enable_google_analytics: Enable Google Analytics
+  google_analytics_description: "Google Analytics に統計情報を送信する"
+  enable_google_analytics: "Google Analytics を有効化"
   google_analytics_id: Google Analytics ID
   recaptcha_integration: Recaptcha
-  recaptcha_description: Recaptcha helps protect your self service helpdesk from spam.
-  enable_recaptcha: Enable Recaptcha
+  recaptcha_description: "質問を作成する時 Recaptcha を要求するとスパムを減らせるが、ユーザーに負担がかかる"
+  enable_recaptcha: "Recaptcha を有効化"
   recaptcha_site_key: Recaptcha Site Key
   recaptcha_api_key: Recaptcha API Key
   cloudinary_integration: Cloudinary
-  cloudinary_description: Cloudinary offers image hosting and transformation services.
-  enable_cloudinary: Enable Cloudinary
+  cloudinary_description: "Cloudinary は画像保存・変換機能を提供しているサービス"
+  enable_cloudinary: "Cloudinary を有効化"
   cloudinary_cloud_name: Cloudinary Cloud Name
   cloudinary_api_key: Cloudinary API Key
   cloudinary_api_secret: Cloudinary API Secret
 
   # Email
-  mail_service: Inbound Mail Service Provider
-  send_email: Enable Outbound (SMTP) Email
-  boolean_no: No
-  boolean_yes: Yes
-  admin_email: Admin Email
-  from_email: From Email
-  smtp_mail_username: SMTP Username
-  smtp_mail_password: SMTP Password
-  mail_smtp: SMTP Server
-  mail_port: SMTP Port
-  mail_domain: SMTP Domain
-  spam_assassin_reject: SpamAssassin Threshold for rejecting incoming email tickets 
-  spam_assassin_filter: SpamAssassin Threshold for marking incoming tickets spam
-  email_blacklist: Automatically mark tickets from these addresses as spam (separate multiple with commas)
+  mail_service: "メール受信 API のプロバイダー"
+  send_email: "メール送信機能 (SMTP) を有効化"
+  boolean_no: "いいえ"
+  boolean_yes: "はい"
+  admin_email: "管理者のメールアドレス"
+  from_email: "送信元のメールアドレス"
+  smtp_mail_username: "SMTP ユーザー名"
+  smtp_mail_password: "SMTP パスワード"
+  mail_smtp: "SMTP サーバ"
+  mail_port: "SMTP ポート"
+  mail_domain: "SMTP ドメイン"
+  spam_assassin_reject: "スパムフィルタ SpamAssassin 用の受信拒否の閾値"
+  spam_assassin_filter: "スパムフィルタ SpamAssassin 用のスパム設定の閾値 (受信はするがスパムフォルダに入る)"
+  email_blacklist: "メールアドレスのブラックリスト (複数指定する場合は , で分割する)"
 
   # API Key Managmeent
-  api_keys: "API Keys"
-  key_name: "Key Name"
-  token: "Token"
-  add_key: "Add a New Key"
-  expire_token: "Expire Token"
-  expired: "Expired"
-  expire_confirm: "Please confirm your really want to expire this token."
-  spec_note: "You can read and test out an interactive API spec at: "
+  api_keys: "API キー"
+  key_name: "キー名"
+  token: "トークン"
+  add_key: "新しいキーを追加"
+  expire_token: "トークンを無効化"
+  expired: "無効化済み"
+  expire_confirm: "このトークンを無効化するかどうかご確認ください。"
+  spec_note: "API を試す: "
 
   # Insights
-  activity_report: "Activity Report"
-  team_insights: "Team Insights"
-  filter_by_date: "Filter by date"
-  today: "Today"
-  yesterday: "Yesterday"
-  this_week: "This week"
-  last_week: "Last week"
-  this_month: "This month"
-  last_month: "Last month"
-  date_range: "Date Range"
-  insight_start_range: "Start date:"
-  insight_end_range: "End date:"
-  insight_filter: "Filter"
+  activity_report: "活動レポート"
+  team_insights: "チームの統計"
+  filter_by_date: "日付範囲を指定"
+  today: "今日"
+  yesterday: "昨日"
+  this_week: "今週"
+  last_week: "先週"
+  this_month: "今月"
+  last_month: "先月"
+  date_range: "日付の範囲"
+  insight_start_range: "開始日:"
+  insight_end_range: "終了日:"
+  insight_filter: "適用"
   insights_blurb_one:
-    one: "<strong>%{period}</strong> your users opened 1 new ticket"
-    other: "<strong>%{period}</strong> your users opened <strong>%{count} new tickets</strong>"
-  insights_blurb_two: "of which your team replied to <strong>%{number_replied} (%{percentage_replied})</strong>"
-  insights_blurb_three_html_html: "with a median response time of <strong>%{response_time}</strong>"
-  no_discussions: "No new tickets have been opened <strong>%{period}</strong>"
-  assigned_topics: "Assigned Tickets"
-  responded: "Responded"
-  closed: "Closed"
-  replies: "Replies"
-  median_time: "Median time to first response"
+    one: "<strong>%{period}</strong> 期間中ユーザーは <strong>1</strong> つのチケットを作成しました"
+    other: "<strong>%{period}</strong> 期間中ユーザーは <strong>%{count}</strong> つのチケットを作成しました"
+  insights_blurb_two: "、チームが返信した数は <strong>%{number_replied} (%{percentage_replied}％)</strong>"
+  insights_blurb_three_html_html: "、返信までの時間は <strong>%{response_time}</strong>"
+  no_discussions: "<strong>%{period}</strong> 期間中新しチケットは作成されていません"
+  assigned_topics: "アサイン済みのチケット"
+  responded: "返信済みのチケット"
+  closed: "解決済みのチケット"
+  replies: "返信数"
+  median_time: "最初に返信するまで掛かった時間の中央値"
 
   # Reports
-  ticketing_reports: Ticketing Reports
-  group_report: "Group Report"
-  team_reports: "Team Reports"
-  percent_resolved: Percent Resolved
-  average_resolution_time: Average Resolution Time
-  new_tickets: New Tickets
-  new_tickets_explain: The number of new tickets your Helpy has received in this period.
-  tickets_per_day: Tickets per Day
-  tickets_per_day_explain: The number of tickets your Helpy averages per day.
-  replies_explain: The number of replies your agents have written in this period.
-  actions_explain: The total number of actions (replies or internal notes) in this period. A good indication of how busy your Helpy is overall.
-  closed_explain: The number of tickets closed during this period. Should be close to the number of new tickets for prior periods.
+  ticketing_reports: "チケットレポート"
+  group_report: "グループレポート"
+  team_reports: "チームレポート"
+  percent_resolved: "解決済みの割合"
+  average_resolution_time: "解決するまでの平均時間"
+  new_tickets: "新しいチケット"
+  new_tickets_explain: "期間中作成されたチケットの数"
+  tickets_per_day: "毎日作成されたチケットの数"
+  tickets_per_day_explain: "毎日作成されたチケットの平均数"
+  replies_explain: "期間中の返信数"
+  actions_explain: "期間中の活動回数 (返信・内部メモ作成など)"
+  closed_explain: "期間中解決したチケットの数"
 
   # IMPORT/EXPORT
-  file_type: Type
-  file_users: Users
-  file_tickets: Tickets
-  file_replies: Replies
-  file_docs: Docs
-  file_categories: Categories
-  file_forums: Forums
-  import: 'Import CSV'
-  new_import: 'New Import'
-  export: 'Export CSV'
-  what_to_export: 'Select what you would like to export'
-  what_to_import: 'Select what you would like to import'
-  imports: 'Imports'
-  exports: 'Exports'
-  past_imports: 'Previous Imports'
-  run_time: 'Run Time'
-  clear_all: 'Remove All'
-  error_details: 'Error Details'
-  row_number: 'Row Number'
-  error_message: 'Error Message'
-  object: 'Object'
-  import_details: '#%{id} Import Details'
-  select_for_export: 'Export %{model} to .csv'
-  file_date_created: Date Created
-  import_total_submitted: Total Submitted Records
-  import_total_created: Total Created Records
-  file_name: File Name
-  file_download: Download
-  file_delete: Delete
-  file_delete_confirm: "Are you sure you want to delete this .csv?"
+  file_type: "タイプ"
+  file_users: "ユーザー"
+  file_tickets: "チケット"
+  file_replies: "返信"
+  file_docs: "ドキュメント"
+  file_categories: "カテゴリー"
+  file_forums: "フォーム"
+  import: 'CSV からインポート'
+  new_import: 'インポート'
+  export: 'CSV にエクスポート'
+  what_to_export: 'エクスポートする項目を選択してください'
+  what_to_import: 'インポートする項目を選択してください'
+  imports: 'インポート'
+  exports: 'エクスポート'
+  past_imports: '前のインポート'
+  run_time: '実行時間'
+  clear_all: 'すべてを削除'
+  error_details: 'エラー内容'
+  row_number: '行番号'
+  error_message: 'エラーメッセージ'
+  object: 'オブジェクト'
+  import_details: '#%{id} インポート詳細'
+  select_for_export: '%{model} を CSV にエクスポート'
+  file_date_created: "作成時間"
+  import_total_submitted: "提出したレコード数"
+  import_total_created: "作成されたレコード数"
+  file_name: "ファイル名"
+  file_download: "ダウンロード"
+  file_delete: "削除"
+  file_delete_confirm: "この CSV ファイルを削除しますか？"
 
-  kind_type: &kind Type
+  kind_type: &kind "タイプ"
 
   activerecord:
     attributes:
@@ -550,16 +551,17 @@ en:
         password: "パスワード"
         name: "名前"
         company: "会社"
-        work_phone: "代表番号"
-        home_phone: "固定電話番号"
+        work_phone: "職場の電話番号"
+        home_phone: "電話番号"
         cell_phone: "携帯電話番号"
-        city: "都市(市区町村)"
-        state: "州(都道府県)"
+        city: "市区町村"
+        state: "都道府県"
         signature: "シグネチャ"
         title:
         time_zone: "タイムゾーン"
-        street: "街道"
+        street: "住所"
         notes: "メモ"
+        zip: "郵便番号"
       topic:
         kind: *kind
         name: *subject
@@ -604,8 +606,8 @@ en:
         description: "説明"
         private: "プライベート"
         layout: "レイアウト"
-        allow_topic_voting: "トピックへの投票を許可しますか?"
-        allow_post_voting: "投稿への投票を許可しますか?"
+        allow_topic_voting: "チケットへの投票を許可しますか?"
+        allow_post_voting: "返信への投票を許可しますか?"
 
     helpers:
       submit:
