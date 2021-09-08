@@ -87,18 +87,30 @@ module ApplicationHelper
     end
   end
 
-  def tag_listing(tags, tagging_type = "message")
-    return unless tagging_type == "doc"
-    tags.each do |tag|
-      concat content_tag(:span, tag, class: "label label-#{tagging_type}-tagging label-#{tag.first.downcase} #{'pull-right' if tagging_type == 'message'}")
+  def first_char_alpha(str)
+    head = str.first.downcase
+    if head.count("a-zA-Z").zero?
+      head = ('a'.ord + (head.ord % 26)).chr
     end
+    head
+  end
+
+  def tag_listing(tags, tagging_type = "message")
+    spans = ""
+    tags.each do |tag|
+      head = first_char_alpha(tag)
+      spans += content_tag(:span, tag, class: "label label-#{tagging_type}-tagging label-#{head} #{'pull-right' if tagging_type == 'message'}")
+    end
+    spans.html_safe
   end
 
   def doc_tag_listing(tags, tagging_type = "message")
-    return unless tagging_type == "doc"
+    spans = ""
     tags.each do |tag|
-      concat content_tag(:span, tag, class: "label label-#{tagging_type}-tagging label-#{tag.first.downcase} #{'pull-right' if tagging_type == 'message'}")
+      head = first_char_alpha(tag)
+      spans += content_tag(:span, tag, class: "label label-#{tagging_type}-tagging label-#{head} #{'pull-right' if tagging_type == 'message'}")
     end
+    spans.html_safe
   end
 
   def login_with(with, redirect_to = "/#{I18n.locale}")

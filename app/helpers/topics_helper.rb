@@ -106,7 +106,11 @@ module TopicsHelper
   end
 
   def color_sample(tag_name)
-    content_tag(:div, '', style: badge_color_from_tag(tag_name), class: 'color-sample label-' + tag_name.first.downcase) + content_tag(:div, tag_name.try(:titleize))
+    head = tag_name.first.downcase
+    if head.count("a-zA-Z").zero?
+      head = ('a'.ord + (head.ord % 26)).chr
+    end
+    content_tag(:div, '', style: badge_color_from_tag(tag_name), class: 'color-sample label-' + head) + content_tag(:div, tag_name.try(:titleize))
   end
 
   def extension_whitelist

@@ -11,6 +11,8 @@ Changes:
 - Fix email processor for non utf-8 encoding
 - Complete japanese translation
 - Fix email templates (use text only)
+- Show team list on topic list and user list, support color sample with non-alpha character
+- Allow filter from closed topics
 
 Sponsor/Support Helpy
 ========
