@@ -10,8 +10,8 @@ class PostMailer < ActionMailer::Base
     @post = Post.find(post_id)
     @topic = @post.topic
     @posts = @topic.posts.where.not(id: @post.id).ispublic.active.reverse
-    @header = Doc.where(title: 'Customer_header').first.present? ? Doc.where(title: 'Customer_header').first.body : ""
-    @footer = Doc.where(title: 'Customer_footer').first.present? ? Doc.where(title: 'Customer_footer').first.body : ""
+    # @header = Doc.where(title: 'Customer_header').first.present? ? Doc.where(title: 'Customer_header').first.body : ""
+    # @footer = Doc.where(title: 'Customer_footer').first.present? ? Doc.where(title: 'Customer_footer').first.body : ""
 
     # Do not send if internal
     return if @topic.kind == 'internal'

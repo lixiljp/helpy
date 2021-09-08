@@ -4,10 +4,5 @@
 
 <%= t('hello', user_name: @topic.user.login) %>,
 
-<%= simple_format(@topic.posts.last.body) %>
+<%= @topic.posts.last.text_formatted_body %>
 <%= simple_format(@post.user.signature) if @post.user.signature.present? %>
-
-<%= t('view_online', default: 'View this online:') %> <%= ticket_url(@topic, host: AppSettings['settings.site_url']) %>
------------
-Powered by Helpy
-Get a Free Helpy Support System for your Site at http://helpy.io/

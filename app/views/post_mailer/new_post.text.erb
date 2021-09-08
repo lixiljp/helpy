@@ -1,5 +1,3 @@
-<%= strip_tags(@header) %>
-
 <% if include_body? %>
 <%= t('above_this_line', default: "Make sure your reply appears above this line") %>
 =================================================================
@@ -10,7 +8,3 @@
 
 <%= @post.text_formatted_body if include_body? %>
 <%= strip_tags(@post.user.signature) if @post.user.signature.present? %>
-
-<%= t('view_online', default: 'View this online:') %> <%= ticket_url(@topic, host: AppSettings['settings.site_url']) %>
------------
-<%= strip_tags(footer_tokens(@footer)) %>

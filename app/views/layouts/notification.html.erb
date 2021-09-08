@@ -21,30 +21,9 @@
     </table>
     <table style="background-color: #f3f3f3;" class="body" data-made-with-foundation>
       <tr>
-        <td class="center" align="center" valign="top">
-          <br/><br/>
-          <center>
-            <% # NOTE: suppress this for dev/test becuase it breaks mailcatcher %>
-            <%= email_image_tag('logo.png', width: 40, height: 40, style: 'width: 40px;') if Rails.env.production? %>
-          </center>
-          <br/>
-        </td>
-      </tr>
-      <tr>
         <td class="center panel" align="center" valign="top">
           <center>
             <%= yield %>
-          </center>
-        </td>
-      </tr>
-      <tr>
-        <td class="center" align="center" valign="top">
-          <center>
-            <small>
-              <br/><br/>
-              <strong>Powered by Helpy</strong><br/>
-              Sign in to adjust your notifications preferences<br/>
-            </small>
           </center>
         </td>
       </tr>

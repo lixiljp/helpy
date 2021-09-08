@@ -10,6 +10,7 @@ Changes:
 - Remove caddy
 - Fix email processor for non utf-8 encoding
 - Complete japanese translation
+- Fix email templates (use text only)
 
 Sponsor/Support Helpy
 ========

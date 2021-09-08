@@ -4,6 +4,6 @@
 
 <%= t('notify_new_public', user_name: "#{@user.name} (#{@user.email})", default: "A new public customer message has been posted by %{user_name}:") %>
 
-<%= simple_format(@topic.posts.last.body) %>
+<%= @topic.posts.last.text_formatted_body %>
 
 <%= t('to_reply', default: 'Reply to this message directly or online:') %> <%= admin_topic_url(@topic, host: AppSettings['settings.site_url']) %>

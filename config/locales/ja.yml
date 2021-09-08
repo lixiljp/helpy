@@ -347,7 +347,7 @@ en:
   account_generated: "このアカウントはあなたによって作成されました。サインインするには，このリンクをご利用ください :"
   above_this_line: "返信内容をこの行の上に置いてください。"
   message_id: "メッセージ ID"
-  message_response: "続くメッセージは頂いたご質問に対する応答です :"
+  message_response: "お問い合わせを承りました:"
   ticket_added: "新しいチケットが作成されました、確認するためにはリンクを開いてください: %{ticket_link}"
   response_added: "新しい返信が来ております、確認するためにはリンクを開いてください: %{ticket_link}"
   view_online: "オンラインで閲覧する:"
