@@ -1,9 +1,6 @@
-<%= t('above_this_line', default: "Make sure your reply appears above this line") %>
-=================================================================
-<%= t('message_id', default: 'Message ID') %>:<%= @topic.id %>
-
 <%= t('notify_new_public', user_name: "#{@user.name} (#{@user.email})", default: "A new public customer message has been posted by %{user_name}:") %>
 
 <%= @topic.posts.last.text_formatted_body %>
 
-<%= t('to_reply', default: 'Reply to this message directly or online:') %> <%= admin_topic_url(@topic, host: AppSettings['settings.site_url']) %>
+<%= t('to_reply', default: 'Reply to this message directly or online:') %>
+<%= admin_topic_url(@topic, host: AppSettings['settings.site_url']) %>

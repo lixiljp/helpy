@@ -10,8 +10,23 @@ class PostMailer < ActionMailer::Base
     @post = Post.find(post_id)
     @topic = @post.topic
     @posts = @topic.posts.where.not(id: @post.id).ispublic.active.reverse
-    # @header = Doc.where(title: 'Customer_header').first.present? ? Doc.where(title: 'Customer_header').first.body : ""
-    # @footer = Doc.where(title: 'Customer_footer').first.present? ? Doc.where(title: 'Customer_footer').first.body : ""
+
+    # Get email header and footer by team, if not found then fallback to the common template
+    header_doc = nil
+    footer_doc = nil
+    team = @topic.team_list.first
+    if team.present?
+      header_doc = Doc.where(title: "[#{team}] Customer_header").first
+      footer_doc = Doc.where(title: "[#{team}] Customer_footer").first
+    end
+    if header_doc.blank?
+      header_doc = Doc.where(title: 'Customer_header').first
+    end
+    if footer_doc.blank?
+      footer_doc = Doc.where(title: 'Customer_footer').first
+    end
+    @header = header_doc.present? ? header_doc.body : ""
+    @footer = footer_doc.present? ? footer_doc.body : ""
 
     # Do not send if internal
     return if @topic.kind == 'internal'

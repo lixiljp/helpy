@@ -1,7 +1,3 @@
-<%= t('above_this_line', default: "Make sure your reply appears above this line") %>
-=================================================================
-<%= t('message_id', default: 'Message ID') %>:<%= @topic.id %>
-
 <%= t('hello', user_name: @topic.user.login) %>,
 
 <%= @topic.posts.last.text_formatted_body %>

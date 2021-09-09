@@ -11,9 +11,12 @@ Changes:
 - Fix email processor for non utf-8 encoding
 - Complete japanese translation
 - Fix email templates (use text only)
-- Show team list on topic list and user list, support color sample with non-alpha character
-- Allow filter from closed topics
-- Automatic assign team to topic by email address (the old logic not work in most case)
+- Improve multi-team support
+    - Show team list on topic list and user list, support color sample with non-alpha character
+    - Automatic assign team to topic by email address (the old logic not work in most case)
+    - Get email header and footer by team, if not found then fallback to the common template
+        - the template name is `[team_name] Customer_header` and `[team_name] Customer_footer`
+- TODO: Allow filter from closed topics
 
 Sponsor/Support Helpy
 ========

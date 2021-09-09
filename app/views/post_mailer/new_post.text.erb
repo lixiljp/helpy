@@ -1,10 +1,8 @@
-<% if include_body? %>
-<%= t('above_this_line', default: "Make sure your reply appears above this line") %>
-=================================================================
-<%= t('message_id', default: 'Message ID') %>:<%= @topic.id %>
-<% end %>
+<%= strip_tags(@header) %>
 
 <%= t('message_response', default: 'The following message has been posted in response to your question:') %>
 
 <%= @post.text_formatted_body if include_body? %>
 <%= strip_tags(@post.user.signature) if @post.user.signature.present? %>
+
+<%= strip_tags(footer_tokens(@footer)) %>
