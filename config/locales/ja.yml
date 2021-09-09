@@ -313,7 +313,7 @@ en:
   select_icon_helptext: "カテゴリーと関係しているものをアイコンよりお選びください"
   translate: "異なる言語への翻訳"
   view_on_site: "サイトで見る"
-  written_on: "%{date_written} に書かれました"
+  written_on: "作成日: %{date_written}"
   content_last_updated: "最終更新日: %{date_updated}"
   featured_content: "優秀な内容"
   draft_content: "下書き"
@@ -393,11 +393,11 @@ en:
   group_description:
 
   # General
-  site_name: "サイト名"
-  site_url: "サイトURL"
-  site_url_placeholder: "Helpy URL (今アクセスしているサイトのURL)"
-  parent_site: "親サイト"
-  parent_company: "親会社"
+  site_name: "お問い合わせサイト名"
+  site_url: "お問い合わせサイトURL"
+  site_url_placeholder:
+  parent_site: "メインサイトURL"
+  parent_company: "メインサイト名"
   site_tagline: "タグ"
   enable_forums: "コミュニティ機能を有効化"
   enable_knowledgebase: "ドキュメント機能を有効化"

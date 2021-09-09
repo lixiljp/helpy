@@ -127,10 +127,10 @@ class EmailProcessor
     )
 
     if topic.save
-      if token.include?("+")
-        topic.team_list.add(token.split('+')[1])
-        topic.save
-        topic.team_list.add(token)
+      # Automatic assign team by email address
+      team = ActsAsTaggableOn::Tag.where(email_address: to).first
+      if team.present?
+        topic.team_list.add(team)
         topic.save
       end
       #insert post to new topic

@@ -13,6 +13,7 @@ Changes:
 - Fix email templates (use text only)
 - Show team list on topic list and user list, support color sample with non-alpha character
 - Allow filter from closed topics
+- Automatic assign team to topic by email address (the old logic not work in most case)
 
 Sponsor/Support Helpy
 ========
