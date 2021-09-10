@@ -183,4 +183,9 @@ module ApplicationHelper
     end
   end
 
+  def strip_tags_ex(html)
+    ActionController::Base.helpers.strip_tags(
+      html.to_s.gsub("</div>", "</div>\n").gsub("</p>", "</p>\n").gsub("<br/", "\n<br/").gsub("<br ", "\n<br ")).strip
+  end
+
 end

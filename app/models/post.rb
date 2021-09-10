@@ -153,6 +153,8 @@ class Post < ActiveRecord::Base
 
   def text_formatted_body
     trimmed_body = EmailReplyTrimmer.trim(body)
+    trimmed_body = (trimmed_body.to_s
+      .gsub("</div>", "</div>\n").gsub("</p>", "</p>\n").gsub("<br/", "\n<br/").gsub("<br ", "\n<br ").strip)
     "#{ActionView::Base.full_sanitizer.sanitize(ApplicationController.helpers.body_tokens(trimmed_body, topic))}".html_safe
   end
 

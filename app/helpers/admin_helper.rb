@@ -53,7 +53,7 @@ module AdminHelper
   end
 
   def team_reply_options(team_list)
-    options = []
+    options = [["", ""]]
     prefix = ""
     if team_list.present?
       prefix = "[#{team_list.first}]"
