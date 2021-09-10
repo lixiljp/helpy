@@ -52,6 +52,24 @@ module AdminHelper
     grouped_options
   end
 
+  def team_reply_options(team_list)
+    options = []
+    prefix = ""
+    if team_list.present?
+      prefix = "[#{team_list.first}]"
+    end
+    Doc.replies.each do |doc|
+      title = "#{doc.title}"
+      if title.first == '['
+        if prefix.blank? || !title.start_with?(prefix)
+          next
+        end
+      end
+      options.push([doc.title, doc.body])
+    end
+    options
+  end
+
   def i18n_icons(object)
     output = '<div class="locale-badges pull-right hidden-xs hidden-sm">'
     AppSettings['i18n.available_locales'].each do |locale|

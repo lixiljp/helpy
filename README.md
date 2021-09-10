@@ -15,7 +15,9 @@ Changes:
     - Show team list on topic list and user list, support color sample with non-alpha character
     - Automatic assign team to topic by email address (the old logic not work in most case)
     - Get email header and footer by team, if not found then fallback to the common template
-        - the template name is `[team_name] Customer_header` and `[team_name] Customer_footer`
+        - First use `[team_name] Customer_header` and `[team_name] Customer_footer`, if not found then use `Customer_header` and `Customer_footer`
+    - Filter common replies by team
+        - If title is `[team_name] title` then only the specific team can use it, other title will show anyway as usually
 - TODO: Allow filter from closed topics
 
 Sponsor/Support Helpy
