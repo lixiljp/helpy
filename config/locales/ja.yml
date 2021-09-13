@@ -490,9 +490,9 @@ en:
   insights_blurb_two: "、チームが返信した数は <strong>%{number_replied} (%{percentage_replied}％)</strong>"
   insights_blurb_three_html_html: "、返信までの時間は <strong>%{response_time}</strong>"
   no_discussions: "<strong>%{period}</strong> 期間中新しチケットは作成されていません"
-  assigned_topics: "アサイン済みのチケット"
-  responded: "返信済みのチケット"
-  closed: "解決済みのチケット"
+  assigned_topics: "アサイン済み"
+  responded: "返信済み"
+  closed: "解決済み"
   replies: "返信数"
   median_time: "最初に返信するまで掛かった時間の中央値"
 

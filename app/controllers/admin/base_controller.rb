@@ -122,7 +122,7 @@ class Admin::BaseController < ApplicationController
     @open = topics.open.size
     @active = topics.active.size
     @mine = Topic.active.mine(current_user.id).size
-    # @closed = topics.closed.count
+    @closed = topics.closed.count
     @spam = topics.spam.size
     @trash = topics.trash.size
   end
