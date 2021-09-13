@@ -11,7 +11,7 @@
 <% else %>
   <div class="row">
     <div class="col-md-1 col-sm-1"></div>
-    <div class="col-md-4 col-sm-4 main-option-container">
+    <div class="col-md-4 col-sm-4 main-option-container hide">
       <div class="jumbotron text-center main-option">
         <%= link_to(new_topic_path) do %>
           <i class="fas fa-plus-circle main-icon"></i>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="col-md-1 col-sm-1"></div>
-    <div class="col-md-4 col-sm-4 main-option-container">
+    <div class="col-md-4 col-sm-4 main-option-container hide">
       <div class="jumbotron text-center main-option">
         <%= link_to(tickets_path) do %>
           <i class="fas fa-ticket-alt main-icon"></i>
@@ -31,5 +31,14 @@
       </div>
     </div>
     <div class="col-md-1 col-sm-1"></div>
+    <div class="col-md-12 col-sm-12 main-option-container">
+      <div class="jumbotron text-center main-option">
+        <%= link_to(admin_root_path) do %>
+          <i class="fas fa-ticket-alt main-icon"></i>
+          <%= content_tag :h3, "#{t(:admin_panel, default: 'Admin')}" %>
+          <button class="btn btn-default hide"><%= "#{t(:admin_panel, default: 'Admin')}" %></button>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -131,12 +131,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    @browser_locale = http_accept_language.compatible_language_from(AppSettings['i18n.available_locales'])
-    unless params[:locale].blank?
-      I18n.locale = AppSettings['i18n.available_locales'].include?(params[:locale]) ? params[:locale] : AppSettings['i18n.default_locale']
-    else
-      I18n.locale = @browser_locale
-    end
+    # for unknown reason available_locales will always be ["en"], there no way to change it
+    # so here just set the fucking language to what we need
+    I18n.locale = 'ja'
   end
 
   def set_vars

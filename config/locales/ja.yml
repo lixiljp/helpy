@@ -8,6 +8,9 @@ en:
   support_team: "サポートチーム"
   nothing_here: "ここにお探しのものはありません"
 
+  # Additional
+  admin_panel: "管理画面"
+
   # Navigation
   knowledgebase: "ドキュメント"
   community: "コミュニティ"
