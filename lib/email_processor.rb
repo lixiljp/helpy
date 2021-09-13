@@ -42,6 +42,14 @@ class EmailProcessor
     number_of_attachments = attachments.present? ? attachments.size : 0
     spam_report = @email.spam_report
 
+    # Use Reply-To as from address if presented
+    reply_to = @email.headers['Reply-To']
+    if reply_to.present?
+      reply_to_parsed = Mail::AddressList.new(reply_to).addresses[0]
+      email_address = reply_to_parsed.address.downcase
+      email_name = reply_to_parsed.display_name.blank? ? reply_to_parsed.local.gsub(/[^a-zA-Z]/, '') : reply_to_parsed.display_name
+    end
+
     # Fix incorrect subject encoding sent by outlook
     begin
       headers_subject = @email.headers['Subject']
