@@ -29,7 +29,6 @@ class EmailProcessor
     # puts @email.inspect
 
     # Set attributes from email
-    sitename = AppSettings["settings.site_name"]
     email_address = @email.from[:email].downcase
     email_name = @email.from[:name].blank? ? @email.from[:token].gsub(/[^a-zA-Z]/, '') : @email.from[:name]
     message = @email.body.nil? ? "" : encode_entity(@email.raw_body, @email.charsets["text"])
@@ -61,8 +60,10 @@ class EmailProcessor
       puts e
     end
 
-    if subject.include?("[#{sitename}]") # this is a reply to an existing topic
-      EmailProcessor.create_reply_from_email(@email, email_address, email_name, subject, raw, message, token, to, sitename, cc, number_of_attachments, @spam_score, spam_report)
+    reply_matched = subject.match(/\[.+?\] #(\d+)\-/)
+    if reply_matched.present? # this is a reply to an existing topic
+      topic_id = reply_matched[1]
+      EmailProcessor.create_reply_from_email(@email, email_address, email_name, subject, raw, message, token, to, topic_id, cc, number_of_attachments, @spam_score, spam_report)
     elsif subject.include?("Fwd: ") # this is a forwarded message TODO: Expand this to handle foreign email formatting
       EmailProcessor.create_forwarded_message_from_email(@email, subject, raw, message, token, to, cc, number_of_attachments, @spam_score, spam_report)
     else # this is a new direct message
@@ -214,7 +215,7 @@ class EmailProcessor
   end
 
   # Adds a reply to an existing ticket thread from an email response.
-  def self.create_reply_from_email(email, email_address, email_name, subject, raw, message, token, to, sitename, cc, number_of_attachments, spam_score, spam_report)      
+  def self.create_reply_from_email(email, email_address, email_name, subject, raw, message, token, to, topic_id, cc, number_of_attachments, spam_score, spam_report)      
     
     # flag as spam if below spam score threshold
     ticket_status = (spam_score > AppSettings["email.spam_assassin_filter"].to_f) ? "spam" : "new"
@@ -224,9 +225,7 @@ class EmailProcessor
       @user = EmailProcessor.create_user_for_email(email_address, token, email_name, ticket_status)
     end
 
-    complete_subject = subject.split("[#{sitename}]")[1].strip
-    ticket_number = complete_subject.split("-")[0].split("#")[1].strip
-    topic = Topic.find(ticket_number)
+    topic = Topic.find(topic_id)
 
     if topic.present?
       # insert post to new topic

@@ -43,12 +43,16 @@ class PostMailer < ActionMailer::Base
     @post.attachments.each do |att|
       attachments[att.file.filename] = ENV["REMOTE_STORAGE"]=="true" ? open(att.url).read : File.read(att.file.file)
     end
+    site_name = AppSettings['settings.site_name']
+    if @topic.team_list.present?
+      site_name = @topic.team_list.first.to_s
+    end
     mail(
       to: email_with_name,
       cc: @post.cc,
       bcc: @post.bccs,
       from: @topic.from_email_address,
-      subject: "[#{AppSettings['settings.site_name']}] ##{@topic.id}-#{@topic.name}"
+      subject: "[#{site_name}] ##{@topic.id}-#{@topic.name}"
       )
   end
 end

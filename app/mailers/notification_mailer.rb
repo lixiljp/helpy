@@ -27,11 +27,15 @@ class NotificationMailer < ApplicationMailer
     @user = @topic.user
     @recipient = notifiable_users.first
     @bcc = notifiable_users.last(notifiable_users.count-1).collect {|u| u.email}
+    site_name = AppSettings['settings.site_name']
+    if @topic.team_list.present?
+      site_name = @topic.team_list.first.to_s
+    end
     mail(
       to: @recipient.email,
       bcc: @bcc,
       from: AppSettings['email.admin_email'],
-      subject: "[#{AppSettings['settings.site_name']}] ##{@topic.id}-#{@topic.name}"
+      subject: "[#{site_name}] ##{@topic.id}-#{@topic.name}"
       )
   end
 end

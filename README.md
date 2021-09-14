@@ -21,6 +21,8 @@ Changes:
         - First use `[team_name] Customer_header` and `[team_name] Customer_footer`, if not found then use `Customer_header` and `Customer_footer`
     - Filter common replies by team
         - If title is `[team_name] title` then only the specific team can use it, other title will show anyway as usually
+    - Use team name instead of site name for email subject
+    - Support handle email reply with subject `[team_name] #topic_id-title`
 
 Sponsor/Support Helpy
 ========
