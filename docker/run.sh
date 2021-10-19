@@ -8,10 +8,10 @@ echo "waiting $SLEEPSECONDS seconds for postgres.."
 
 # sleep while postgres is initializing
 sleep $SLEEPSECONDS
-pg_isready -q -h postgres
+pg_isready -q -h "${POSTGRES_HOST}"
 ISREADY=$?
 while [[ "$ISREADY" != 0 ]]; do
-  pg_isready -q -h postgres
+  pg_isready -q -h "${POSTGRES_HOST}"
   let ISREADY=$?
   echo "waiting $SLEEPSECONDS seconds for postgres.."
   sleep $SLEEPSECONDS
