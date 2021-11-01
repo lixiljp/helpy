@@ -20,9 +20,12 @@ services:
     restart: always
     env_file: docker/.env
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
   mailcatcher:
     image: schickling/mailcatcher:latest
     ports:
       - 127.0.0.1:1080:1080
     restart: always
+
+volumes:
+    postgres_data:

@@ -261,12 +261,17 @@ class Topic < ActiveRecord::Base
   end
 
   def from_email_address
-    system_from_email = %("#{AppSettings['settings.site_name']}" <#{AppSettings['email.admin_email']}>)
+    system_email_address = AppSettings['email.admin_email']
+    system_from_email = %("#{AppSettings['settings.site_name']}" <#{system_email_address}>)
     return system_from_email if self.team_list.blank?
 
     team = ActsAsTaggableOn::Tag.where('lower(name) = ?', self.team_list.first.downcase).first
     if team.email_address.present?
-      %("#{team.email_name}" <#{team.email_address}>)
+      # When system email is `noreply@sender.com` and team email is `xxx@receiver.com`
+      # Notifications email will sent from `xxx@sender.com`
+      # In this case, `xxx@sender.com` must forward emails to `xxx@receiver.com`
+      team_email_address = team.email_address.split('@')[0] + '@' + system_email_address.split('@')[1]
+      %("#{team.email_name}" <#{team_email_address}>)
     else
       system_from_email
     end

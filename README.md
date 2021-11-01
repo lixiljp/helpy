@@ -23,6 +23,10 @@ Changes:
         - If title is `[team_name] title` then only the specific team can use it, other title will show anyway as usually
     - Use team name instead of site name for email subject
     - Support handle email reply with subject `[team_name] #topic_id-title`
+    - Support split sender and receiver email:
+        - When system email is `noreply@sender.com` and team email is `xxx@receiver.com`
+        - Notifications email will sent from `xxx@sender.com`
+        - In this case, `xxx@sender.com` must forward emails to `xxx@receiver.com`
 
 Sponsor/Support Helpy
 ========

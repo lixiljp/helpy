@@ -34,7 +34,7 @@ class NotificationMailer < ApplicationMailer
     mail(
       to: @recipient.email,
       bcc: @bcc,
-      from: AppSettings['email.admin_email'],
+      from: @topic.from_email_address,
       subject: "[#{site_name}] ##{@topic.id}-#{@topic.name}"
       )
   end
