@@ -108,14 +108,7 @@ Category.create(name:'Troubleshooting', icon: 'ok-circle', title_tag: 'Troublesh
 # Create email header and footer tempalte
 
 templates.docs.create!(title: 'Customer_header', body: '<!-- -->')
-templates.docs.create!(title: 'Customer_footer', body:'<p style="color: #666;">
-<small>
-<strong>Powered by Helpy</strong><br>
-Get a Free Helpy Support System for your Site at
-<a href="https://helpy.io/">https://helpy.io/</a>
-</small>
-</p>
-<p style="color: #666;"><small>%ticket_link%</small></p>')
+templates.docs.create!(title: 'Customer_footer', body:'<p style="color: #666;"></p>')
 
 
 # Create first example tickets

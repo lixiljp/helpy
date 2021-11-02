@@ -16,8 +16,16 @@ class PostMailer < ActionMailer::Base
     footer_doc = nil
     team = @topic.team_list.first
     if team.present?
-      header_doc = Doc.where(title: "[#{team}] Customer_header").first
-      footer_doc = Doc.where(title: "[#{team}] Customer_footer").first
+      # why rails i18n support is so broken?
+      locale = AppSettings['i18n.default_locale']
+      header_doc = DocTranslation.where(title: "[#{team}] Customer_header", locale: locale).first
+      footer_doc = DocTranslation.where(title: "[#{team}] Customer_footer", locale: locale).first
+      if header_doc.blank?
+        header_doc = Doc.where(title: "[#{team}] Customer_header").first
+      end
+      if footer_doc.blank?
+        footer_doc = Doc.where(title: "[#{team}] Customer_footer").first
+      end
     end
     if header_doc.blank?
       header_doc = Doc.where(title: 'Customer_header').first
