@@ -26,14 +26,14 @@ class EmailProcessor
     return if (@spam_score > AppSettings["email.spam_assassin_reject"].to_f)
 
     # debug email contents
-    # puts @email.inspect
+    puts @email.inspect
 
     # Set attributes from email
-    email_address = @email.from[:email].downcase
+    email_address = @email.from[:email].split(' ')[0].downcase
     email_name = @email.from[:name].blank? ? @email.from[:token].gsub(/[^a-zA-Z]/, '') : @email.from[:name]
     message = @email.body.nil? ? "" : encode_entity(@email.raw_body, @email.charsets["text"])
     raw = @email.raw_body.nil? ? "" : encode_entity(@email.raw_body, @email.charsets["text"])
-    to = @email.to.first[:email]
+    to = @email.to.first[:email].split(' ')[0]
     cc = @email.cc ? @email.cc.map { |e| e[:full] }.join(", ") : nil
     token = @email.to.first[:token]
     subject = check_subject(@email.subject)
@@ -137,7 +137,9 @@ class EmailProcessor
 
     if topic.save
       # Automatic assign team by email address
-      team = ActsAsTaggableOn::Tag.where(email_address: to).first
+      # When system email is `noreply@sender.com` and team email is `xxx@receiver.com`
+      # Email sent to xxx@sender.com will also consider as team email.
+      team = ActsAsTaggableOn::Tag.where('email_address like ?', to.split('@')[0] + '@%').first
       if team.present?
         topic.team_list.add(team)
         topic.save
