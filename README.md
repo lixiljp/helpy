@@ -14,6 +14,7 @@ Changes:
 - Complete japanese translation
 - Fix email templates (use text only)
 - Show closed tickets
+- Automatic sign-in for AWS ELB authorizer when env `TF_ECS_SERVICE_NAME` exists
 - Improve common reply
     - Reset the common reply dropdown every time
     - Replace content with common reply instead of append
