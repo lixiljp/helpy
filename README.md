@@ -14,6 +14,10 @@ Changes:
 - Complete japanese translation
 - Fix email templates (use text only)
 - Show closed tickets
+- Improve common reply
+    - Reset the common reply dropdown every time
+    - Replace content with common reply instead of append
+    - Replace variables like `{Name}`, `{名前}` automatically from common reply
 - Improve multi-team support
     - Show team list on topic list and user list, support color sample with non-alpha character
     - Automatic assign team to topic by email address (the old logic not work in most case)

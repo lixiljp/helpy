@@ -247,11 +247,23 @@ Helpy.ready = function(){
   // Use or append common reply
   $('#post_reply_id').on('change', function(){
     var common_reply = $('#post_reply_id option:selected');
+    var reply = common_reply.val();
 
-    // set value of summernote with existing value + common reply
-    $('#post_body').summernote('code', $('#post_body').summernote('code') + common_reply.val());
-    $('#topic_post_body').summernote('code', $('#topic_post_body').summernote('code') + common_reply.val());
-    $('.disableable').attr('disabled', false);
+    if (reply) {
+      // replace name inside template
+      var username = ($('#user-contact-info .tiny-header').first().text() || "").trim();
+      var first_post = $('.post-body').first().html() || '';
+      var english_name = (first_post.match(/Name:(.+?)</) || ['', ''])[1].trim();
+      var japanese_name = (first_post.match(/氏名:(.+?)</) || ['', ''])[1].trim();
+      reply = reply.replace('{名前}', (japanese_name || username).split(' ')[0]);
+      reply = reply.replace('{氏名}', (japanese_name || username).split(' ')[0]);
+      reply = reply.replace('{Name}', (english_name || username).split(' ').slice(-1)[0]);
+
+      // set value of summernote with common reply
+      $('#post_body').summernote('code', reply);
+      $('#topic_post_body').summernote('code', reply);
+      $('.disableable').attr('disabled', false);
+    }
   });
 
   $('.post-menu span').off().on('click', function(){

@@ -81,7 +81,7 @@ $('[data-provider="summernote"]').each(function(){
       onInit: function (e) {
         $("#post_body").summernote("code", localStorage.getItem("topic_reply_draft_<%= @topic.id %>"));
       }
-    },    
+    },
     height: 150,
     prettifyHtml: true,
     toolbar: [
@@ -154,6 +154,11 @@ $(function () {
   $('#new_post').on('submit', function () {
     localStorage.removeItem("topic_reply_draft_<%= @topic.id %>");
   });
+
+  // select reply by default
+  $("input[name='post[kind]']").val(["reply"]);
+  // reset template select
+  $("select[name='post[reply_id]']").val("");
 });
 </script>
 
