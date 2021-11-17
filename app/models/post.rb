@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
   attr_accessor :reply_id
 
   # Whitelist tags and attributes that are allowed in posts
-  ALLOWED_TAGS = %w(strong em a p br b img ul li)
+  ALLOWED_TAGS = %w(strong em a p br b img ul li div)
   ALLOWED_ATTRIBUTES = %w(href src class style width height target)
 
   belongs_to :topic, counter_cache: true, touch: true
