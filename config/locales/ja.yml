@@ -1,6 +1,6 @@
 # MAINTAINER: SCOTT MILLER
 
-en:
+ja:
   language_name: "日本語"
   root: &root 'ホーム'
   how_can_we_help: "なにかお探しでしょうか?"

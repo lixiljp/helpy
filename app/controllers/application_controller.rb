@@ -131,9 +131,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    # for unknown reason available_locales will always be ["en"], there no way to change it
-    # so here just set the fucking language to what we need
-    I18n.locale = 'ja'
+    # force locale to ja to avoid any further bugs
+    I18n.locale = :ja
+    I18n.default_locale = :ja
+    I18n.enforce_available_locales = true
+    I18n.available_locales = [:ja]
   end
 
   def set_vars
