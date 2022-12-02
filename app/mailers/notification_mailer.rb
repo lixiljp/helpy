@@ -23,14 +23,17 @@ class NotificationMailer < ApplicationMailer
     return if @topic.user.nil?
     return if @topic.spam_score.to_f > AppSettings["email.spam_assassin_filter"].to_f
     
+    site_name = AppSettings['settings.site_name']
+    if @topic.team_list.present?
+      site_name = @topic.team_list.first.to_s
+      topic_team_list = @topic.team_list.collect { |t| t.to_s }
+      notifiable_users = notifiable_users.select { |u| u.role == 'admin' || (u.team_list.collect { |t| t.to_s } & topic_team_list).present? }
+    end
     @posts = @topic.posts.where.not(id: @topic.posts.last.id).reverse
     @user = @topic.user
     @recipient = notifiable_users.first
     @bcc = notifiable_users.last(notifiable_users.count-1).collect {|u| u.email}
-    site_name = AppSettings['settings.site_name']
-    if @topic.team_list.present?
-      site_name = @topic.team_list.first.to_s
-    end
+    
     mail(
       to: @recipient.email,
       bcc: @bcc,
