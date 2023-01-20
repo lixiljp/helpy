@@ -79,7 +79,6 @@ $('[data-provider="summernote"]').each(function(){
     lang: '<%= summernote_locale %>',
     callbacks: {
       onInit: function (e) {
-        $("#post_body").summernote("code", localStorage.getItem("topic_reply_draft_<%= @topic.id %>"));
       }
     },
     height: 500,
@@ -144,16 +143,6 @@ $.ajax({
 <script>
 $(function () {
   $("#new_post").sisyphus();
-  $(document).off('keyup').on('keyup', '.note-editable', function(){
-    localStorage.setItem("topic_reply_draft_<%= @topic.id %>", $("#post_body").summernote("code"));
-  });
-  //setInterval(function () {
-  //  localStorage.setItem("topic_reply_draft_<%= @topic.id %>", $("#post_body").summernote("code"));
-  //}, 3000); // every 5 second interval
-
-  $('#new_post').on('submit', function () {
-    localStorage.removeItem("topic_reply_draft_<%= @topic.id %>");
-  });
 
   // select reply by default
   $("input[name='post[kind]']").val(["reply"]);

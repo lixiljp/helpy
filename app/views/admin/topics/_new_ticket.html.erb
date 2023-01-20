@@ -99,7 +99,6 @@ $('[data-provider="summernote"]').each(function(){
     callbacks: {
     <% unless params[:user_id].present? %>
       onInit: function (e) {
-        $("#topic_post_body").summernote("code", localStorage.getItem("new_ticket_draft"));
       }
     <% end %>
     }
@@ -122,23 +121,5 @@ $.ajax({
   });
   <% unless params[:user_id].present? %>
     $("#new_topic").sisyphus();
-
-    // Add clear saved draft option
-    if (localStorage.getItem("[id=new_topic][name=undefined][id=topic_current_status][name=topic[current_status]]") !== null) {
-      $('#has-storage').html('<input type="reset" name="commit" value="Clear autosaved draft" data-validate="false" class="btn btn-default clear-draft" style="margin-top: -10px; margin-left: 10px;">');
-    }
-    $('.clear-draft').on("click", function () {
-      localStorage.removeItem("new_ticket_draft");
-      $('[data-provider="summernote"]').summernote('code', '');
-      $('#has-storage').fadeOut();
-    });  
   <% end %>
-  $(document).off('keyup').on('keyup', '.note-editable', function () {
-    localStorage.setItem("new_ticket_draft", $("#topic_post_body").summernote("code"));
-  });
-  $('#new_topic').on('submit', function () {
-    localStorage.removeItem("new_ticket_draft");
-  });
-
-
 </script>
