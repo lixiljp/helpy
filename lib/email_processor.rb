@@ -60,6 +60,9 @@ class EmailProcessor
       puts e
     end
 
+    # Do not handle email from blacklist
+    return if AppSettings['email.email_blacklist'].split(",").any? { |s| email_address.include?(s.strip.downcase) }
+
     reply_matched = subject.match(/\[.+?\] #(\d+)\-/)
     if reply_matched.present? # this is a reply to an existing topic
       topic_id = reply_matched[1]
