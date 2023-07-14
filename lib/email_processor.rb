@@ -63,6 +63,18 @@ class EmailProcessor
     # Do not handle email from blacklist
     return if AppSettings['email.email_blacklist'].split(",").any? { |s| email_address.include?(s.strip.downcase) }
 
+    # Manual filter fucking spam emails
+    md = message.downcase
+    score = 0
+    score += md.include?('china') ? 1 : 0
+    score += md.include?('xiamen') ? 1 : 0
+    score += md.include?('sales') ? 1 : 0
+    score += md.include?('dear') ? 1 : 0
+    score += md.include?('products') ? 1 : 0
+    score += md.include?('our service') ? 1 : 0
+    score += md.include?('for more information') ? 1 : 0
+    return if score > 2
+
     reply_matched = subject.match(/\[.+?\] #(\d+)\-/)
     if reply_matched.present? # this is a reply to an existing topic
       topic_id = reply_matched[1]
