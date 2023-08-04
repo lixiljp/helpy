@@ -72,7 +72,11 @@ class EmailProcessor
     score += md.include?('dear') ? 1 : 0
     score += md.include?('products') ? 1 : 0
     score += md.include?('our service') ? 1 : 0
+    score += md.include?('our company') ? 1 : 0
+    score += md.include?('services') ? 1 : 0
+    score += md.include?('introduce') ? 1 : 0
     score += md.include?('for more information') ? 1 : 0
+    score += md.include?('+86') ? 1 : 0
     return if score > 2
 
     reply_matched = subject.match(/\[.+?\] #(\d+)\-/)
