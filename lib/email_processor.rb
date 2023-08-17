@@ -71,11 +71,21 @@ class EmailProcessor
     score += md.include?('sales') ? 1 : 0
     score += md.include?('dear') ? 1 : 0
     score += md.include?('products') ? 1 : 0
+    score += md.include?('we are') ? 1 : 0
+    score += md.include?('we hereby') ? 1 : 0
+    score += md.include?('we strive') ? 1 : 0
+    score += md.include?('choose us') ? 1 : 0
     score += md.include?('our service') ? 1 : 0
     score += md.include?('our company') ? 1 : 0
+    score += md.include?('our email') ? 1 : 0
+    score += md.include?('to provide') ? 1 : 0
     score += md.include?('services') ? 1 : 0
     score += md.include?('introduce') ? 1 : 0
     score += md.include?('for more information') ? 1 : 0
+    score += md.include?('here are') ? 1 : 0
+    score += md.include?('any interest') ? 1 : 0
+    score += md.include?('welcome to') ? 1 : 0
+    score += md.include?('unsubscribe here') ? 1 : 0
     score += md.include?('+86') ? 1 : 0
     return if score > 2
 
