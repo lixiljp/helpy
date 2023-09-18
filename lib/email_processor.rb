@@ -87,6 +87,16 @@ class EmailProcessor
     score += md.include?('welcome to') ? 1 : 0
     score += md.include?('unsubscribe here') ? 1 : 0
     score += md.include?('+86') ? 1 : 0
+    score += md.include?('电话') ? 1 : 0
+    score += md.include?('微信') ? 1 : 0
+    score += md.include?('公司') ? 1 : 0
+    score += md.include?('产品') ? 1 : 0
+    score += md.include?('您') ? 1 : 0
+    score += md.include?('我们') ? 1 : 0
+    score += md.include?('业务') ? 1 : 0
+    score += md.include?('经理') ? 1 : 0
+    score += md.include?('网易') ? 1 : 0
+    score += md.include?('定制') ? 1 : 0
     return if score > 2
 
     reply_matched = subject.match(/\[.+?\] #(\d+)\-/)
