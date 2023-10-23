@@ -74,10 +74,14 @@ class EmailProcessor
     score += md.include?('we are') ? 1 : 0
     score += md.include?('we hereby') ? 1 : 0
     score += md.include?('we strive') ? 1 : 0
+    score += md.include?('we have') ? 1 : 0
     score += md.include?('choose us') ? 1 : 0
+    score += md.include?('with us') ? 1 : 0
     score += md.include?('our service') ? 1 : 0
     score += md.include?('our company') ? 1 : 0
     score += md.include?('our email') ? 1 : 0
+    score += md.include?('our new') ? 1 : 0
+    score += md.include?('our product') ? 1 : 0
     score += md.include?('to provide') ? 1 : 0
     score += md.include?('services') ? 1 : 0
     score += md.include?('introduce') ? 1 : 0
@@ -86,6 +90,12 @@ class EmailProcessor
     score += md.include?('any interest') ? 1 : 0
     score += md.include?('welcome to') ? 1 : 0
     score += md.include?('unsubscribe here') ? 1 : 0
+    score += md.include?('hi there') ? 1 : 0
+    score += md.include?('learn more') ? 1 : 0
+    score += md.include?('announce') ? 1 : 0
+    score += md.include?('it will') ? 1 : 0
+    score += md.include?('this will') ? 1 : 0
+    score += md.include?('you can') ? 1 : 0
     score += md.include?('+86') ? 1 : 0
     score += md.include?('电话') ? 1 : 0
     score += md.include?('微信') ? 1 : 0
