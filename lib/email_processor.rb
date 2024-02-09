@@ -9,29 +9,25 @@ class EmailProcessor
   end
 
   def process
-
-
-
-
     # Guard clause to prevent ESPs like Sendgrid from posting over and over again
     # if the email presented is invalid and generates a 500.  Returns a 200
     # error as discussed on https://sendgrid.com/docs/API_Reference/Webhooks/parse.html
     # This error happened with invalid email addresses from PureChat
+    return unless @email.from.present?
     return if @email.from[:email].match(/\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/).blank?
 
     # Here we use a global spam score to system block spam, as well as a configurable
     # spam score to set status to SPAM above the configured level.
 
     # Outright reject spam from creating a ticket at all
-    return if (@spam_score > AppSettings["email.spam_assassin_reject"].to_f)
+    # return if (@spam_score > AppSettings["email.spam_assassin_reject"].to_f)
 
     # debug email contents
     puts @email.inspect
-    puts @email.from[:email]
-    puts @email.headers['Reply-To']
+    puts "From: #{@email.from[:email]}, Reply-To: #{@email.headers['Reply-To']}"
 
     # Set attributes from email
-    email_address = @email.from[:email].split(' ')[0].downcase
+    email_address = (@email.from[:email] || '').split(' ')[0].downcase
     email_name = @email.from[:name].blank? ? @email.from[:token].gsub(/[^a-zA-Z]/, '') : @email.from[:name]
     message = @email.body.nil? ? "" : encode_entity(@email.raw_body, @email.charsets["text"])
     raw = @email.raw_body.nil? ? "" : encode_entity(@email.raw_body, @email.charsets["text"])
@@ -47,14 +43,16 @@ class EmailProcessor
     reply_to = @email.headers['Reply-To']
     if reply_to.present?
       reply_to_parsed = Mail::AddressList.new(reply_to).addresses[0]
-      email_address = reply_to_parsed.address.downcase
-      email_name = reply_to_parsed.display_name.blank? ? reply_to_parsed.local.gsub(/[^a-zA-Z]/, '') : reply_to_parsed.display_name
+      if reply_to_parsed.present? && reply_to_parsed.address.present?
+        email_address = reply_to_parsed.address.downcase
+        email_name = reply_to_parsed.display_name.blank? ? reply_to_parsed.local.gsub(/[^a-zA-Z]/, '') : reply_to_parsed.display_name
+      end
     end
 
     # Fix incorrect subject encoding sent by outlook
     begin
       headers_subject = @email.headers['Subject']
-      if headers_subject.start_with?('=?gb2312?B?')
+      if headers_subject.present? && headers_subject.start_with?('=?gb2312?B?')
         subject = encode_entity(Base64.decode64(
           headers_subject.strip.gsub("\n", "").gsub(" ", "").gsub("=?gb2312?B?", "").gsub("?=", "")), "gb2312")
       end
