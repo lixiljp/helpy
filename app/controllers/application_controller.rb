@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :set_vars
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :set_time_zone, if: :current_user
+  skip_around_filter :set_locale_from_url
 
   force_ssl if: :ssl_configured?
 

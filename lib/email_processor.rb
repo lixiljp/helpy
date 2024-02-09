@@ -27,6 +27,8 @@ class EmailProcessor
 
     # debug email contents
     puts @email.inspect
+    puts @email.from[:email]
+    puts @email.headers['Reply-To']
 
     # Set attributes from email
     email_address = @email.from[:email].split(' ')[0].downcase
