@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :add_root_breadcrumb
   before_action :set_locale
   before_action :set_vars
+  before_action :check_cdn_key
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :set_time_zone, if: :current_user
   skip_around_filter :set_locale_from_url
@@ -172,6 +173,16 @@ class ApplicationController < ActionController::Base
     logger.warn("WARNING!!! Error setting configs.")
     if AppSettings['email.mail_service'] == 'mailin'
       AppSettings['email.mail_service'] == ''
+    end
+  end
+
+  def check_cdn_key
+    cdn_key_header = request.headers['X-CDN-Key']
+    cdn_key = ENV['CDN_KEY']
+    unless cdn_key.blank?
+      if cdn_key != cdn_key_header
+        render :text => "Forbidden", :status => 403
+      end
     end
   end
 
