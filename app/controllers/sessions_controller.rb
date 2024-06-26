@@ -1,31 +1,25 @@
 require "base64"
 require "json"
+require 'uri'
 
 class SessionsController < Devise::SessionsController
   theme :theme_chosen
-  before_action :auto_signin_for_aws_elb
+  before_action :auto_sign_in
 
-  def auto_signin_for_aws_elb
+  def auto_sign_in
     return if user_signed_in? || ENV['TF_ECS_SERVICE_NAME'].blank?
 
     user = nil
-
-    oidc_header = request.headers['x-amzn-oidc-data']
-    unless oidc_header.blank?
-      payload_json = Base64.urlsafe_decode64(oidc_header.split('.')[1])
-      payload = JSON.parse(payload_json)
-      if payload['email_verified']
-        email = payload['email']
-        user = User.where('email = ?', email).first
-      end
-    end
 
     cdn_key_header = request.headers['X-CDN-Key']
     cdn_key = ENV['CDN_KEY']
     unless cdn_key.blank?
       if cdn_key == cdn_key_header
-        email = request.headers['x-user-email']
-        user = User.where('email = ?', email).first
+        email = URI.decode(request.headers['x-user-email'] || '')
+        puts "try auto sign in with '#{email}'"
+        unless email.blank?
+          user = User.where('email = ?', email).first
+        end
       end
     end
 
