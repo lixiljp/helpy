@@ -113,15 +113,20 @@ class EmailProcessor
     score += md.include?('benefi') ? 1 : 0
     score += md.include?('it will') ? 1 : 0
     score += md.include?('this will') ? 1 : 0
+    score += md.include?('you will') ? 1 : 0
     score += md.include?('you can') ? 1 : 0
+    score += md.include?('unless you') ? 1 : 0
     score += md.include?('pls check') ? 1 : 0
     score += md.include?('please check') ? 1 : 0
+    score += md.include?('please visit') ? 1 : 0
+    score += md.include?('please click') ? 1 : 0
     score += md.include?('p.r.c') ? 2 : 0
     score += md.include?('helps you') ? 2 : 0
     score += md.include?('help you') ? 2 : 0
     score += md.include?('feel free') ? 2 : 0
     score += md.include?('contact us') ? 3 : 0
     score += md.include?('best regard') ? 1 : 0
+    score += md.include?('sincerely') ? 1 : 0
     score += md.include?('+86') ? 2 : 0
     score += md.include?('电话') ? 3 : 0
     score += md.include?('微信') ? 3 : 0
@@ -133,6 +138,8 @@ class EmailProcessor
     score += md.include?('经理') ? 3 : 0
     score += md.include?('网易') ? 3 : 0
     score += md.include?('定制') ? 3 : 0
+    score += md.include?('商检') ? 3 : 0
+    score += md.include?('买单') ? 3 : 0
     score += md.include?('.163.com') ? 3 : 0
     score += md.include?('@163.com') ? 3 : 0
     return if score > 2
