@@ -1,5 +1,8 @@
 FROM ruby:2.5
 
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.old
+RUN echo "deb http://archive.debian.org/debian/ buster contrib main non-free" >> /etc/apt/sources.list
+
 ENV RAILS_ENV=production \
     HELPY_HOME=/helpy \
     HELPY_USER=helpyuser \
